@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="logo text-xl">
             <img src={logo} alt="" />
         </div>
-        <div className="flex space-x-[2vw] items-center xl:text-lg md:text-md ">
+        <div className="flex space-x-[2vw] items-center text-md ">
             <div className="cursor-pointer">Recruiter Login</div>
             <div className="cursor-pointer bg-red-400 px-[15px] py-[5px] rounded-[1vh] ">Login</div>
         </div>
