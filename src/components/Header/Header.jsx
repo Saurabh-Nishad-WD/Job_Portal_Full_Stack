@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import search from "../../assets/search_icon.svg";
 import location from "../../assets/location_icon.svg";
 import img1 from "../../assets/amazon_logo.png";
@@ -8,8 +8,31 @@ import img4 from "../../assets/samsung_logo.png";
 import img5 from "../../assets/microsoft_logo.svg";
 import img6 from "../../assets/facebook_icon.svg";
 import img7 from "../../assets/instagram_icon.svg";
+import { Appcontext } from "../../context/AppContext";
 
 const Header = () => {
+
+
+  const {setSearched,setSearchFilter} = useContext(Appcontext)
+
+  const titleRef = useRef(null)
+  const locationRef = useRef(null)
+
+  const onSearch = () => {
+      setSearchFilter({
+        title:titleRef.current.value,
+        location: locationRef.current.value
+      });
+
+      setSearched(true);
+      console.log({
+        title:titleRef.current.value,
+        location: locationRef.current.value
+      });
+      
+  }
+
+
   return (
     <div className="flex flex-col gap-y-5 justify-center">
       {/* Hero Section */}
@@ -32,6 +55,7 @@ const Header = () => {
                 type="text"
                 placeholder="Job title, keyword..."
                 className="w-full md:w-auto border-none outline-none focus:ring-0 bg-transparent p-2"
+                ref={titleRef}
               />
             </div>
 
@@ -42,11 +66,13 @@ const Header = () => {
                 type="text"
                 placeholder="Location..."
                 className="w-full md:w-auto border-none outline-none focus:ring-0 bg-transparent p-2"
+                ref={locationRef}
               />
             </div>
 
             {/* Search Button */}
-            <button className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg w-full md:w-auto text-center cursor-pointer hover:bg-red-600 transition">
+            <button onClick={onSearch} className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg w-full md:w-auto text-center cursor-pointer hover:bg-red-600 transition duration-300"
+>
               Search
             </button>
           </div>
