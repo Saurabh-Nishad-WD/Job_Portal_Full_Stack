@@ -7,7 +7,7 @@ export const AppContextProvider = (props) => {
 
     }
     return(
-        <Appcontext.Provider vlaue={value}>
+        <Appcontext.Provider value={value}>
     {props.children}
         </Appcontext.Provider>
     )
